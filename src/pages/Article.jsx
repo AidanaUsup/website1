@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion';
+import { useLanguage } from '../contexts/LanguageContext.jsx';
 
 function Article() {
+  const { t } = useLanguage();
+
   return (
     <div className="page-shell page-content">
       <motion.section
@@ -10,24 +13,61 @@ function Article() {
         transition={{ duration: 0.5 }}
       >
         <span className="eyebrow">Article</span>
-        <h1>The Science Behind Kymyz</h1>
+        <h1>{t('articleTitle')}</h1>
         <p>
-          Kymyz is a traditional fermented drink from Kyrgyz nomadic culture. It is produced from mare’s
-          milk through natural fermentation, shaped by centuries of observation and practice.
+          {t('articleIntro1')}
         </p>
         <p>
-          During fermentation, bacteria and yeast break down lactose into lactic acid, carbon dioxide,
-          and small flavor compounds. This creates a unique balance of sourness, effervescence, and
-          nutrition.
+          {t('articleIntro2')}
         </p>
-        <div className="feature-card">
-          <h2>Traditional biotechnology</h2>
+        
+        <motion.div
+          className="feature-card"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <h2>{t('scientificValidation')}</h2>
           <p>
-            The makers of kymyz understand the process through lived knowledge: temperature, starter
-            culture, and timing are tuned by experience. It is an everyday science expressed through
-            heritage.
+            {t('scientificValidationText')}
           </p>
-        </div>
+        </motion.div>
+
+        <motion.div
+          className="feature-card"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+        >
+          <h2>{t('nomadicInnovation')}</h2>
+          <p>
+            {t('nomadicInnovationText')}
+          </p>
+        </motion.div>
+
+        <motion.div
+          className="feature-card"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+        >
+          <h2>{t('bridgingTradition')}</h2>
+          <p>
+            {t('bridgingTraditionText')}
+          </p>
+        </motion.div>
+
+        <motion.div
+          className="feature-card"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.8 }}
+        >
+          <h2>{t('advancedKnowledge')}</h2>
+          <p>
+            {t('advancedKnowledgeText')}
+          </p>
+        </motion.div>
       </motion.section>
     </div>
   );

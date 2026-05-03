@@ -1,11 +1,13 @@
 import { motion, useInView } from 'framer-motion';
 import { useRef, useEffect } from 'react';
+import { useLanguage } from '../contexts/LanguageContext.jsx';
 import PreviewCard from '../components/PreviewCard.jsx';
 import previews from '../data/content.js';
 
 function Home() {
   const heroRef = useRef(null);
   const heroInView = useInView(heroRef, { once: false, threshold: 0.1 });
+  const { t } = useLanguage();
 
   return (
     <div className="page-shell">
@@ -26,35 +28,34 @@ function Home() {
             animate={heroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8, delay: 0.5 }}
           >
-            Welcome to Kymyz
+            {t('eyebrow')}
           </motion.span>
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={heroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.7 }}
           >
-            Where Kyrgyz heritage meets modern storytelling
+            {t('title')}
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={heroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.8, delay: 0.9 }}
           >
-            Discover a minimal ethno-modern experience that honors warm pasture tradition,
-            fermented knowledge, and cultural science.
+            {t('description')}
           </motion.p>
         </motion.div>
       </section>
 
       <section className="preview-section">
         <div className="section-heading">
-          <span>Explore</span>
-          <h2>Featured stories</h2>
+          <span>{t('explore')}</span>
+          <h2>{t('featuredStories')}</h2>
         </div>
         <div className="preview-grid">
-          {previews.map((preview) => (
-            <PreviewCard key={preview.to} {...preview} />
-          ))}
+          <PreviewCard to="/article" cardType="article" />
+          <PreviewCard to="/video" cardType="video" />
+          <PreviewCard to="/podcast" cardType="podcast" />
         </div>
       </section>
     </div>

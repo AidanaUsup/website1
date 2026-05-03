@@ -1,7 +1,41 @@
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../contexts/LanguageContext.jsx';
 
-function PreviewCard({ title, description, to }) {
+function PreviewCard({ to, cardType }) {
+  const { t } = useLanguage();
+
+  const getCardContent = () => {
+    switch (cardType) {
+      case 'article':
+        return {
+          title: t('articleCardTitle'),
+          description: t('articleCardDesc'),
+          linkText: t('readArticle')
+        };
+      case 'video':
+        return {
+          title: t('videoCardTitle'),
+          description: t('videoCardDesc'),
+          linkText: t('watchVideo')
+        };
+      case 'podcast':
+        return {
+          title: t('podcastCardTitle'),
+          description: t('podcastCardDesc'),
+          linkText: t('listenPodcast')
+        };
+      default:
+        return {
+          title: t('articleCardTitle'),
+          description: t('articleCardDesc'),
+          linkText: t('readArticle')
+        };
+    }
+  };
+
+  const content = getCardContent();
+
   return (
     <motion.article
       className="preview-card"
@@ -12,12 +46,12 @@ function PreviewCard({ title, description, to }) {
       transition={{ duration: 0.5, ease: 'easeOut' }}
     >
       <div className="preview-card__content">
-        <span className="preview-card__tag">Preview</span>
-        <h3>{title}</h3>
-        <p>{description}</p>
+        <span className="preview-card__tag">{t('previewTag')}</span>
+        <h3>{content.title}</h3>
+        <p>{content.description}</p>
       </div>
       <Link className="preview-card__link" to={to}>
-        Explore
+        {content.linkText}
       </Link>
     </motion.article>
   );

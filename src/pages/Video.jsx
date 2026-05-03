@@ -1,6 +1,9 @@
 import { motion } from 'framer-motion';
+import { useLanguage } from '../contexts/LanguageContext.jsx';
 
 function Video() {
+  const { t } = useLanguage();
+
   return (
     <div className="page-shell page-content">
       <motion.section
@@ -10,10 +13,9 @@ function Video() {
         transition={{ duration: 0.5 }}
       >
         <span className="eyebrow">Video</span>
-        <h1>Visual Story of Kymyz</h1>
+        <h1>{t('videoTitle')}</h1>
         <p>
-          A short documentary-style video explaining the science of kymyz in a simple and visual way.
-          The film blends pastoral landscapes with modern design language.
+          {t('videoDescription')}
         </p>
         <div className="video-frame">
           <iframe

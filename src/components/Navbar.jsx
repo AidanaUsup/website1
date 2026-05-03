@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useLanguage } from '../contexts/LanguageContext.jsx';
 
 const links = [
   { label: 'Home', to: '/' },
@@ -16,6 +17,14 @@ const menuVariants = {
 
 function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { t, currentLanguage, switchLanguage } = useLanguage();
+
+  const links = [
+    { label: t('home'), to: '/' },
+    { label: t('article'), to: '/article' },
+    { label: t('video'), to: '/video' },
+    { label: t('podcast'), to: '/podcast' },
+  ];
 
   return (
     <header className="navbar-shell">
@@ -26,8 +35,8 @@ function Navbar() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <span className="brand-mark">K</span>
-          <span>Kymyz</span>
+          <span className="brand-mark">S</span>
+          <span>{t('brand')}</span>
         </motion.div>
 
         <nav className="nav-links desktop-only">
@@ -43,6 +52,23 @@ function Navbar() {
             </NavLink>
           ))}
         </nav>
+
+        <div className="language-switcher">
+          <button
+            className={`lang-btn ${currentLanguage === 'en' ? 'active' : ''}`}
+            onClick={() => switchLanguage('en')}
+            title="English"
+          >
+            🇬🇧
+          </button>
+          <button
+            className={`lang-btn ${currentLanguage === 'ky' ? 'active' : ''}`}
+            onClick={() => switchLanguage('ky')}
+            title="Кыргызча"
+          >
+            🇰🇬
+          </button>
+        </div>
 
         <button
           className="menu-toggle mobile-only"
