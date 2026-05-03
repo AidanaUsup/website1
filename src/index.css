@@ -446,6 +446,14 @@ main {
   min-height: 420px;
 }
 
+.main-video-player {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(31, 23, 18, 0.2);
+  display: block;
+}
+
 /* Dropdown Styles */
 .dropdown-container {
   margin: 1.5rem 0;
@@ -505,6 +513,119 @@ main {
 .page-section {
   max-width: 900px;
   margin: 0 auto;
+}
+
+/* Article Specific Styles */
+.article-image-container {
+  width: 100%;
+  margin: 2rem 0;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(31, 23, 18, 0.15);
+}
+
+.article-image-container.secondary {
+  max-width: 80% ;
+  margin: 2rem auto;
+}
+
+.article-main-image,
+.article-side-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.article-main-image:hover,
+.article-side-image:hover {
+  transform: scale(1.02);
+}
+
+.process-steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.step {
+  background: rgba(255, 255, 255, 0.5);
+  padding: 1.5rem;
+  border-radius: 18px;
+  border: 1px solid rgba(139, 87, 57, 0.1);
+}
+
+.step h3 {
+  font-size: 1.1rem;
+  color: var(--accent-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.highlight-text {
+  background: rgba(78, 205, 196, 0.1);
+  padding: 1.5rem;
+  border-left: 4px solid var(--accent-cool);
+  border-radius: 4px 18px 18px 4px;
+  font-weight: 500;
+  margin-top: 1.5rem;
+}
+
+.sub-section {
+  margin-bottom: 2rem;
+}
+
+.sub-section h3 {
+  color: var(--accent-secondary);
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.benefits-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.benefit-item {
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.4);
+  border-radius: 20px;
+  border: 1px solid rgba(78, 205, 196, 0.2);
+}
+
+.benefit-item h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+  color: var(--accent-secondary);
+}
+
+.references-section {
+  background: rgba(31, 23, 18, 0.03);
+}
+
+.references-list {
+  list-style: none;
+  padding: 0;
+}
+
+.references-list li {
+  margin-bottom: 0.75rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.references-list a {
+  color: var(--accent-secondary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.references-list a:hover {
+  color: var(--accent-bright);
+  text-decoration: underline;
 }
 
 .page-shell {

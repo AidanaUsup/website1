@@ -15,16 +15,23 @@ function Video() {
         <span className="eyebrow">Video</span>
         <h1>{t('videoTitle')}</h1>
         <p>
-          {t('videoDescription')}
+          {t('videoSubtitle')}
+        </p>
+        <p className="highlight-text">
+          {t('videoAccessibility')}
         </p>
         <div className="video-frame">
-          <iframe
-            src="https://www.youtube.com/embed/VIDEO_ID"
-            title="Kymyz Story"
-            frameBorder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-          />
+          <video 
+            controls 
+            playsInline
+            preload="metadata"
+            className="main-video-player"
+            poster="/images/suusamyr.jpg"
+          >
+            <source src="/videos/IMG_2712.MOV" type="video/mp4" />
+            <source src="/videos/IMG_2712.MOV" type="video/quicktime" />
+            Your browser does not support the video tag.
+          </video>
         </div>
       </motion.section>
     </div>
